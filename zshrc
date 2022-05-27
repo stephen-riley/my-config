@@ -8,8 +8,8 @@ export ZSH=/Users/$USER/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-POWERLEVEL9K_MODE='nerdfont-complete'
-ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL10K_MODE='nerdfont-complete'
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -63,7 +63,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   dotenv
-  osx
+  macos
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -129,21 +129,5 @@ gifify() {
   fi
 }
 
-# zsh parameter completion for the dotnet CLI
-
-_dotnet_zsh_complete()
-{
-  local completions=("$(dotnet complete "$words")")
-
-  reply=( "${(ps:\n:)completions}" )
-}
-
-compctl -K _dotnet_zsh_complete dotnet
-
-
 alias sqlserver="docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 --name sql1 -d microsoft/mssql-server-linux:2017-latest"
 alias sqlcli="mssql-cli -S localhost -U sa"
-
-alias komodo="open /Applications/Komodo\ IDE\ 11.app"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="$PATH:/Users/jsrs701/Projects/depot_tools"
